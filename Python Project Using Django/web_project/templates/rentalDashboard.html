@@ -1,0 +1,477 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Rental</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shopForBedroom.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
+    <!-- owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+    crossorigin="anonymous" />
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<style>
+  .navbar{
+    background: #131313;
+    height:80px;
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'kumbha sans','sans-serif';
+    scroll-behavior: smooth;
+
+}
+.navbar__container{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding:0 50px
+}
+#navbar__logo{
+    color: #ff8177;
+    background-image: linear-gradient(to top, #ff0844, #ffb119,100%);
+    background-size: 100%;
+    /* -webkit-background-clip: text;
+    -moz-background-clip: text;  */
+    -webkit-animation-fill-color:transparent;
+    -moz-animation-fll-color:transparent; 
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    float: left;
+}
+.navbar__menu{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+.navbar__items{
+    height: 80px;
+
+
+}
+.navbar__items :active{
+    
+    color: #9518fc;
+
+
+}
+.navbar__links{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 100%;
+    text-decoration: none;
+
+}
+.navbar__btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 1rem;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: #833ab4;
+    background: -webkit-linear-gradient(to right,#fcb045,#fd1d1d,#833ab4);
+    background: linear-gradient(to right, #fcb045,#fd1d1d,#833ab4);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+.navbar__links :hover{
+    color: #9518fc;
+
+
+}
+@media screen and (max-width:960px) {
+    .navbar__container{
+        display: flex;
+        justify-items: space-between;
+        height: 80px;
+        z-index:1;
+        width:100%;
+        max-width: 1300px;
+        padding: 0;    
+    }
+    .navbar__menu{
+        display: grid;
+        grid-template-columns: auto;
+        margin: 8;
+        width: 100%;
+        position: absolute;
+        top:-1080px; 
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: -1;
+        background: #131313;
+
+    }
+    .navbar__menu.active{
+        background: #131313;
+        top:100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 99;
+        height:68vh;
+        font-size: 1.6rem;
+    }
+    #navbar__logo{
+        padding-left: 25px;
+    }
+    .navbar__toggle .bar {
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        /* transition: all 8.3s ease-in-out; */
+        background: #fff;
+    }
+    .navbar__item{
+        width: 100%;
+    }
+    .navbar__links{
+        text-align: center;
+        padding: 2rem;
+        width:100%;
+        display:table;
+
+    }
+    #mobile-menu{
+        position: absolute;
+        top:20%;
+        right:5%;
+        transition: translate(5%,20%);
+
+    }
+    .navbar__toggle .bar{
+        display: block;
+        cursor: pointer;
+    }
+    .button{
+        display: flex;
+        justify-content: center;
+        width:80%;
+        height: 80px;
+        margin-bottom: 23px;
+    }
+  #mobile-menu .is-active .bar:nth-child(2){
+    opacity: 0;
+  }
+  #mobile-menu .is-active .bar:nth-child(0){
+    opacity: 0;
+  }
+  #mobile-menu .is-active .bar:nth-child(1){
+    opacity: 0;
+  }
+    
+}
+.items{
+    display: flex;
+    margin-top: 37px;
+    /* justify-content: flex-start; */
+    width: 100%;
+    margin-bottom: 36px;
+}
+.first {
+    width: 25%;
+    height: 400px;
+    
+    text-align: center;
+    
+}
+/* .first:hover {
+    transform: scale(1.3);
+    filter: grayscale(0%);
+} */
+ .first1{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-left: 25px;
+    border:1px solid #ffb119;
+} 
+.first img{
+    width: 300px;
+    height: 300px;
+}
+.second{
+    width: 25%;
+    height: 400px;
+    
+    text-align: center;
+
+}
+.second1{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-left: 25px;
+    border:1px solid #ffb119;
+}
+
+.second img{
+    width: 300px;
+    height: 300px;
+}
+.third{
+    width: 25%;
+    height: 400px;
+    
+    text-align: center;
+
+}
+.third1{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-left: 25px;
+    border:1px solid #ffb119;
+}
+.third img{
+    width: 300px;
+    height: 300px;
+}
+.forth{
+    width: 25%;
+    height: 400px;
+    
+    text-align: center;
+
+}
+.forth1{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-left: 25px;
+    border:1px solid #ffb119;
+}
+.forth img{
+    width: 300px;
+    height: 300px;
+}
+</style>
+
+</head>
+<body>
+    <!-- Navbar Section-->
+    {% include "include.html" %}
+    <!-- 1Bhk -->
+    <div class="container-fluid my-5">
+      <h4 class="text-center fw-bold  mb-5">  <span class="text-danger">1BHK</span></h4>
+      <div class="row">
+          <div class="col-12 m-auto" style="padding-left: 2%;">
+              <div class="owl-carousel owl-theme">
+                  <div class="item " >
+                      <div class="card border-0 shadow">
+                          <img src="{% static 'image/1bhk.jpg'%}" alt="1bhk" class="card-img-top" style="width: 100%;height: 280px;">
+                          <div class="card-body">
+                              <div class="card-title text-center">
+                                  <a href="{% url 'rentaltypeDetail'%}" style="text-decoration: none;"><h4>1BHK</h4></a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- 2Bhk -->
+    <div class="container-fluid my-5">
+      <h4 class="text-center fw-bold  mb-5">  <span class="text-danger">2Bhk</span></h4>
+      <div class="row">
+          <div class="col-12 m-auto" style="padding-left: 2%;">
+              <div class="owl-carousel owl-theme">
+                  <div class="item " >
+                      <div class="card border-0 shadow">
+                          <img src="{% static 'image/1bhk.jpg'%}" alt="1bhk" class="card-img-top" style="width: 100%;height: 280px;">
+                          <div class="card-body">
+                              <div class="card-title text-center">
+                                  <a href="{% url 'rentaltypeDetail'%}" style="text-decoration: none;"><h4>2Bhk</h4></a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- 3Bhk -->
+    <div class="container-fluid my-5">
+      <h4 class="text-center fw-bold  mb-5">  <span class="text-danger">3BHK</span></h4>
+      <div class="row">
+          <div class="col-12 m-auto" style="padding-left: 2%;">
+              <div class="owl-carousel owl-theme">
+                  <div class="item " >
+                      <div class="card border-0 shadow">
+                          <img src="{% static 'image/1bhk.jpg'%}" alt="1bhk" class="card-img-top" style="width: 100%;height: 280px;">
+                          <div class="card-body">
+                              <div class="card-title text-center">
+                                  <a href="{% url 'rentaltypeDetail'%}" style="text-decoration: none;"><h4>3BHK</h4></a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <!-- 4Bhk -->
+    <div class="container-fluid my-5">
+      <h4 class="text-center fw-bold  mb-5">  <span class="text-danger">4BHK</span></h4>
+      <div class="row">
+          <div class="col-12 m-auto" style="padding-left: 2%;">
+              <div class="owl-carousel owl-theme">
+                  <div class="item " >
+                      <div class="card border-0 shadow">
+                          <img src="{% static 'image/1bhk.jpg'%}" alt="1bhk" class="card-img-top" style="width: 100%;height: 280px;">
+                          <div class="card-body">
+                              <div class="card-title text-center">
+                                  <a href="{% url 'rentaltypeDetail'%}" style="text-decoration: none;"><h4>4BHK</h4></a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+                  
+                 
+                  
+                  
+                 
+              
+  
+   
+    
+
+   
+
+
+    
+    
+
+ 
+
+
+   
+
+
+<!-- owl carousel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous"></script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 15,
+            stagepadding:50,
+            
+            nav:false,
+            autoplay:true,
+            dots:false,
+            autoHeight:true,
+            
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        })
+       
+    </script>
+   
+    <script>
+        window.smoothScroll = function(target) {
+    var scrollContainer = target;
+    do { //find scroll container
+        scrollContainer = scrollContainer.parentNode;
+        if (!scrollContainer) return;
+        scrollContainer.scrollTop += 1;
+    } while (scrollContainer.scrollTop == 0);
+    
+    var targetY = 0;
+    do { //find the top of target relatively to the container
+        if (target == scrollContainer) break;
+        targetY += target.offsetTop;
+    } while (target = target.offsetParent);
+    
+    scroll = function(c, a, b, i) {
+        i++; if (i > 30) return;
+        c.scrollTop = a + (b - a) / 30 * i;
+        setTimeout(function(){ scroll(c, a, b, i); }, 20);
+    }
+    // start scrolling
+    scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+}
+function myFunction() {
+            
+            swal({
+            title: "Your Booking Successfully Completed,Our team will contact you soon",
+        });
+    }
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="app.js"> </script>
+
+</body>
+</html>

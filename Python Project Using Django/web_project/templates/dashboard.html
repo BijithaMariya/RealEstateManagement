@@ -1,0 +1,492 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Real Estate Management</title>
+    {% comment %} <link rel="stylesheet" href="style.css"> {% endcomment %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
+    <!-- owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+    crossorigin="anonymous" />
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <style>
+        
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'kumbha sans','sans-serif';
+    scroll-behavior: smooth;
+
+}
+.navbar{
+    background: #131313;
+    height:80px;
+    display: flex;
+    justify-content: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+.navbar__container{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding:0 50px
+}
+#navbar__logo{
+    color: #ff8177;
+    background-image: linear-gradient(to top, #ff0844, #ffb119,100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text; 
+    -webkit-animation-fill-color:transparent;
+    -moz-animation-fll-color:transparent; 
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    float: left;
+}
+.navbar__menu{
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+.navbar__items{
+    height: 80px;
+
+
+}
+.navbar__items :active{
+    
+    color: #9518fc;
+
+
+}
+.navbar__links{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 125px;
+    height: 100%;
+    text-decoration: none;
+
+}
+.navbar__btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 1rem;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: #833ab4;
+    background: -webkit-linear-gradient(to right,#fcb045,#fd1d1d,#833ab4);
+    background: linear-gradient(to right, #fcb045,#fd1d1d,#833ab4);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+.navbar__links :hover{
+    color: #9518fc;
+
+
+}
+@media screen and (max-width:960px) {
+    .navbar__container{
+        display: flex;
+        justify-items: space-between;
+        height: 80px;
+        z-index:1;
+        width:100%;
+        max-width: 1300px;
+        padding: 0;    
+    }
+    .navbar__menu{
+        display: grid;
+        grid-template-columns: auto;
+        margin: 8;
+        width: 100%;
+        position: absolute;
+        top:-1080px; 
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: -1;
+        background: #131313;
+
+    }
+    .navbar__menu.active{
+        background: #131313;
+        top:100%;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: 99;
+        height:68vh;
+        font-size: 1.6rem;
+    }
+    #navbar__logo{
+        padding-left: 25px;
+    }
+    .navbar__toggle .bar {
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        /* transition: all 8.3s ease-in-out; */
+        background: #fff;
+    }
+    .navbar__item{
+        width: 100%;
+    }
+    .navbar__links{
+        text-align: center;
+        padding: 2rem;
+        width:100%;
+        display:table;
+
+    }
+    #mobile-menu{
+        position: absolute;
+        top:20%;
+        right:5%;
+        transition: translate(5%,20%);
+
+    }
+    .navbar__toggle .bar{
+        display: block;
+        cursor: pointer;
+    }
+    .button{
+        display: flex;
+        justify-content: center;
+        width:80%;
+        height: 80px;
+        margin-bottom: 23px;
+    }
+  #mobile-menu .is-active .bar:nth-child(2){
+    opacity: 0;
+  }
+  #mobile-menu .is-active .bar:nth-child(0){
+    opacity: 0;
+  }
+  #mobile-menu .is-active .bar:nth-child(1){
+    opacity: 0;
+  }
+    
+}
+/* #carousel{
+     height: 80px; 
+} */
+/* .bookfreebutton{
+     margin-bottom: 45px;
+    background-color: #d32913;
+    border-radius: 20px;
+    width: 300px;
+    align-items: center;
+    padding-left: 0px;
+    margin-left: 329px; 
+} */
+/* .item{
+     display: flex; 
+} */
+/* .card{
+    width: 296px;
+    height: 100px; 
+} */
+.footer{
+    background-color: #fd1d1d;
+    width: 100%;
+    height: 30px;
+    padding-bottom: 83px;
+    text-align: center;
+    padding-top: 27px;
+}
+.booking{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 13px;
+}
+.inner-booking{
+    border:3px solid #131313;
+    padding-bottom: 20px; 
+    width: 358px;
+    padding-left: 23px;
+    padding-right: 17px;
+    padding-top: 12px;
+
+}
+.card-body{
+    padding-bottom: 65px;
+}
+.size{
+    height: 200px;
+}
+.details{
+    text-align: center;
+    width: 100%;
+}
+    </style>
+
+
+</head>
+<body>
+    <!-- Navbar Section-->
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="{% url 'dashboard'  %}" id="navbar__logo">Real Estate Management</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__items">
+                    <a href="{% url 'dashboard'  %}" class="navbar__links" id="home-page">Home</a>
+                </li>
+                <li class="navbar__items">
+                    <a href="{% url 'about'  %}" class="navbar__links" id="about-page">About</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="{% url 'estateRegistration'  %}" class="button" id="signip" style="
+                    padding-top: 0px;
+                    padding-bottom: 0px;
+                ">Registration your Estate</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="{% url 'loginDetails'  %}" class="button" id="signip">Sign Up</a>
+                </li>
+               
+    
+            </ul>
+        </div>
+       
+    
+
+    </nav>
+    <!-- carousel -->
+   
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+    
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner" id="carousel">
+      <div class="carousel-item active">
+        <img src="{% static 'image/pexels-photo-186077.jpeg'%}" alt="Building1" class="d-block" style="width:100%;    height: 690px;">
+        <div class="carousel-caption">
+            <button style="width: 300px;height: 50px;border-radius: 10px;    background: #706a69;" onclick="smoothScroll(document.getElementById('second'))"><a href="" style="color: white;text-decoration: none;width: 300px;height: 50px;    background: #706a69;">Book Free Consultation</a></button>
+          
+        </div> 
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'image/pexels-photo-280229.jpeg'%}" alt="Building2" class="d-block" style="width:100%;    height: 690px;">
+        <div class="carousel-caption">
+            <button style="width: 300px;height: 50px;border-radius: 10px;    background: #4d5657;" onclick="smoothScroll(document.getElementById('second'))"><a href="" style="color: white;text-decoration: none;width: 300px;height: 50px;    background: #4d5657;">Book Free Consultation</a></button>
+          
+        </div> 
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'image/pexels-photo-1438832.jpeg'%}" alt="Building3" class="d-block" style="width:100% ;   height: 690px;">
+        <div class="carousel-caption">
+            <button style="width: 300px;height: 50px;border-radius: 10px;    background: #ab280b;" onclick="smoothScroll(document.getElementById('second'))"><a href="" style="color: white;text-decoration: none;width: 300px;height: 50px;    background: #ab280b;">Book Free Consultation</a></button>
+          
+        </div>  
+      </div>
+    </div>
+    
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+  <!-- Owl carousel -->
+  <!-- Rental Type -->
+    <div class="container-fluid my-5">
+        <h4 class="text-center fw-bold  mb-5">  <span class="text-danger">Rental Type</span></h4>
+        <div class="row">
+            <div class="col-12 m-auto" style="padding-left: 2%;">
+                <div class="owl-carousel owl-theme">
+                    <div class="item " >
+                        <div class="card border-0 shadow">
+                            <img src="{% static 'image/1bhk.jpg'%}" alt="1bhk" class="card-img-top" style="width: 100%;height: 280px;">
+                            <div class="card-body">
+                                <div class="card-title text-center">
+                                    <a href="{% url 'loginDetails'%}" style="text-decoration: none;"><h4>1BHK</h4></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item" >
+                        <div class="card border-0 shadow">
+                            <img src="{% static 'image/2bhk-house-plan.jpg'%}" style="width: 100%;height: 280px;" alt="2BHK" class="card-img-top">
+                            <div class="card-body">
+                                <div class="card-title text-center">
+                                    <a href="{% url 'loginDetails'%}" style="text-decoration: none;"><h4>2BHK</h4></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item " >
+                        <div class="card border-0 shadow">
+                            <img src="{% static 'image/property_img_1593_1500_sqft.png'%}" alt="3bhk" class="card-img-top" style="width: 100%;height: 280px;">
+                            <div class="card-body">
+                                <div class="card-title text-center">
+                                    <a href="{% url 'loginDetails'%}" style="text-decoration: none;"><h4>3BHK</h4></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item " >
+                        <div class="card border-0 shadow">
+                            <img src="{% static 'image/cbf28477dc01878a90d935979c30e7f4.jpg'%}" alt="4bhk" class="card-img-top" style="width: 100%;height: 280px;">
+                            <div class="card-body">
+                                <div class="card-title text-center">
+                                    <a href="{% url 'loginDetails'%}" style="text-decoration: none;"><h4>4BHK</h4></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+            
+       
+    
+    <div class="details">
+        <div>
+            <h4 class="text-center fw-bold  mb-5"> <span class="text-danger">Real Estate</span></h4>
+            <p><strong>(Authorized Distributor of Home and Land)</strong></p>
+            <p><strong>No 43-3098 A, LPS ROAD, PALARIVATTOM, ERNAKULAM, KERALA - 682025</strong></p>
+            <p><strong>Email : customercare@tastynibbles.in</strong></p>
+            <p><strong>Mob : +91 79 94 74 09 99</strong></p>
+            <p><strong>Tel : +91 48 44 86 11 88</strong></p>
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        <h3>Copyright ©2024 Real Estate. All rights reserved   </h3>
+    </div>
+    
+
+ 
+
+
+   
+
+
+<!-- owl carousel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous"></script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 5,
+            stagepadding:60,
+            
+            nav:false,
+            autoplay:true,
+            dots:false,
+            autoHeight:true,
+            
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
+       
+    </script>
+   
+    <script>
+        window.smoothScroll = function(target) {
+    var scrollContainer = target;
+    do { //find scroll container
+        scrollContainer = scrollContainer.parentNode;
+        if (!scrollContainer) return;
+        scrollContainer.scrollTop += 1;
+    } while (scrollContainer.scrollTop == 0);
+    
+    var targetY = 0;
+    do { //find the top of target relatively to the container
+        if (target == scrollContainer) break;
+        targetY += target.offsetTop;
+    } while (target = target.offsetParent);
+    
+    scroll = function(c, a, b, i) {
+        i++; if (i > 30) return;
+        c.scrollTop = a + (b - a) / 30 * i;
+        setTimeout(function(){ scroll(c, a, b, i); }, 20);
+    }
+    // start scrolling
+    scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+}
+function myFunction() {
+            
+            swal({
+            title: "Your Booking Successfully Completed,Our team will contact you soon",
+        });
+    }
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="app.js"> </script>
+</body>
+</html>
